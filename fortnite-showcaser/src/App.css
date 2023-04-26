@@ -7,6 +7,19 @@ body {
   background-color: rgb(4, 18, 107);
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+/* för firefox */
+section {
+  scrollbar-width: none;
+}
+html {
+  scrollbar-width: none;
+}
+.element {
+  overflow: -moz-scrollbars-none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

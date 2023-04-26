@@ -1,9 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import BodyContainer from './BodyContainer/bodyContainer';
 
 
-
-const API_KEY = process.env.REACT_APP_API_KEY;
+//const API_KEY = process.env.REACT_APP_API_KEY;
 
  function App() {
   const [cosmetic, setCosmetics] = useState([]);
@@ -19,7 +19,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
   return (
     <div className="App">
       <h1>Cosmetics showcaser</h1>
-      
+      <BodyContainer/>
     </div>
   );
 }
