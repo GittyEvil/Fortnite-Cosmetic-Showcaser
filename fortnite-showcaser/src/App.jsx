@@ -14,7 +14,13 @@ import BodyContainer from './BodyContainer/bodyContainer';
       setCosmetics(data)
     }
     FetchData()
+
   },[])
+  /*
+  cosmetic.map((list,index)=> {
+    //<li key={index}>{list.type.displayValue}></li>
+  })
+  */
   console.log(cosmetic)
   return (
     <div className="App">
