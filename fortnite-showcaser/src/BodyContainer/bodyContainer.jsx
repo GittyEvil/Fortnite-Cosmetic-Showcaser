@@ -11,7 +11,6 @@ function Boxes(props) {
 function ItemLister({cosmetic}) {
     return (
         <div className='ItemList'>
-            <div className='ItemList'>
                 {cosmetic.slice(0, 100).map((item, index) => (
                     <div key={index}>
                     <h3>{item.name}</h3>
@@ -19,8 +18,6 @@ function ItemLister({cosmetic}) {
                     <p>{item.description}</p>
                     </div>
                 ))}
-                </div>
-            );
         </div>
     )
 }
