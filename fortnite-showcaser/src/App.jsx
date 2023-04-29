@@ -6,28 +6,32 @@ import BodyContainer from './BodyContainer/bodyContainer';
 //const API_KEY = process.env.REACT_APP_API_KEY;
 
  function App() {
-  const [cosmetic, setCosmetics] = useState([]);
+  const [cosmetic, setCosmetics] = useState({});
   useEffect(()=>{
     async function FetchData() {
       const response = await fetch("https://fortnite-api.com/v2/cosmetics/br");
       const data = await response.json();
-      setCosmetics(data)
+      setCosmetics(data.data.slice(0, 100)) //.data.slice(0, 100) skär bara ner hur mång items den ska displaya
     }
     FetchData()
-
+    
   },[])
-  /*
-  cosmetic.map((list,index)=> {
-    //<li key={index}>{list.type.displayValue}></li>
-  })
-  */
+  
   console.log(cosmetic)
+  
+  if (!Array.isArray(cosmetic)) {
+    return <p>No cosmetics found</p>;
+  }
+  
   return (
     <div className="App">
       <h1>Cosmetics showcaser</h1>
-      <BodyContainer/>
+      <BodyContainer cosmetic={cosmetic}/>
+      {/* .map funktionen nedan displayar just nu bara bilderna */ }
+      
     </div>
   );
 }
+
 
 export default App;

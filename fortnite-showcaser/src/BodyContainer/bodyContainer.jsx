@@ -8,17 +8,24 @@ function Boxes(props) {
     ) 
 }
 
-function ItemLister() {
-    //var cosmeticsData = []
-
+function ItemLister({cosmetic}) {
     return (
         <div className='ItemList'>
-            
+            <div className='ItemList'>
+                {cosmetic.slice(0, 100).map((item, index) => (
+                    <div key={index}>
+                    <h3>{item.name}</h3>
+                    <img src={item.images.icon} alt={item.name} />
+                    <p>{item.description}</p>
+                    </div>
+                ))}
+                </div>
+            );
         </div>
     )
 }
 
-function BodyContainer() {
+function BodyContainer({ cosmetic }) {
 
     return(
         <div className="container">
@@ -41,9 +48,7 @@ function BodyContainer() {
                     <button className='button1'>Search</button>
                 </div>
             </div>
-
-            <ItemLister/>
-
+            <ItemLister cosmetic={cosmetic} />
         </div>
     )
 }
