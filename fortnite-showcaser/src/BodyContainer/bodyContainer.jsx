@@ -13,9 +13,9 @@ function ItemLister({cosmetic}) {
         <div className='ItemList'>
                 {cosmetic.slice(0, 100).map((item, index) => (
                     <div key={index}>
-                    <h3>{item.name}</h3>
-                    <img src={item.images.icon} alt={item.name} />
-                    <p>{item.description}</p>
+                    {/*<h3>{item.name}</h3> */}
+                    <img style={{width:"100px"}} src={item.images.icon} />
+                    
                     </div>
                 ))}
         </div>

@@ -43,4 +43,6 @@
     width: 99.5vw;
     height: 950px;
     border: white 3px solid;
+    display: flex;
+    flex-wrap: wrap;
 }
