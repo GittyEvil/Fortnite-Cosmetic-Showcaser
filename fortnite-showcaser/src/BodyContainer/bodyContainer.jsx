@@ -26,7 +26,7 @@ function BodyContainer({ cosmetic }) {
     {/*detta hanterar sidorna och hur mycket items som visas på sidan*/}
     {/*use state är det som gör att sidan uppdaterar och sedan visar ny info*/}
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 100;
+  const itemsPerPage = 152;
 
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
@@ -64,7 +64,7 @@ function BodyContainer({ cosmetic }) {
       {/*pagination, detta är det som gör att man kan skrolla och byta "sida" och inte behöver få sidan att lagga*/}
       <div className="pagination">
         {Array.from({ length: totalPages }).map((_, index) => (
-          <button key={index} className={`page ${currentPage === index + 1 ? 'active' : ''}`} onClick={() => handlePageChange(index + 1)}>{index + 1}</button>
+          <button id='button' key={index} className={`page ${currentPage === index + 1 ? 'active' : ''}`} onClick={() => handlePageChange(index + 1)}>{index + 1}</button>
         ))}
       </div>
     </div>

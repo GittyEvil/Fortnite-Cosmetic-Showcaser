@@ -11,7 +11,7 @@ import BodyContainer from './BodyContainer/bodyContainer';
     async function FetchData() {
       const response = await fetch("https://fortnite-api.com/v2/cosmetics/br");
       const data = await response.json();
-      setCosmetics(data.data.slice(0, 100)) //.data.slice(0, 100) skär bara ner hur mång items den ska displaya
+      setCosmetics(data.data.slice(0, 7000)) //.data.slice(0, 100) skär bara ner hur mång items den ska displaya
     }
     FetchData()
     
