@@ -26,6 +26,10 @@ function BodyContainer({ cosmetic }) {
     {/*detta hanterar sidorna och hur mycket items som visas på sidan*/}
     {/*use state är det som gör att sidan/flikarna uppdaterar och sedan visar ny info*/}
   const [currentPage, setCurrentPage] = useState(1);
+  {/*all info från searchbaren kommer hamna i searchContent*/}
+  const [searchContent, setContent] = useState("");
+
+
   const itemsPerPage = 152;
 
   const lastIndex = currentPage * itemsPerPage;
@@ -58,6 +62,7 @@ function BodyContainer({ cosmetic }) {
           <input className='search' type="text"placeholder="Search here" onChange={(e) => {
             console.log(e.target.value);
           }}/>
+          {/*när knappen trycks ska det man sökt komma upp(föremålet från api)*/}
           <button className='button1'>Search</button>
         </div>
       </div>
