@@ -52,3 +52,7 @@
     height: 25px;
     color: white;
 }
+
+.active {
+    border: 5px solid white;
+}

@@ -24,7 +24,7 @@ function ItemLister({cosmetic}) {
 
 function BodyContainer({ cosmetic }) {
     {/*detta hanterar sidorna och hur mycket items som visas på sidan*/}
-    {/*use state är det som gör att sidan uppdaterar och sedan visar ny info*/}
+    {/*use state är det som gör att sidan/flikarna uppdaterar och sedan visar ny info*/}
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 152;
 
@@ -55,12 +55,16 @@ function BodyContainer({ cosmetic }) {
         </div>
         {/*searchbaren, ska göra så man kan söka efter ett visst item senare*/}
         <div className='searchbar'>
-          <input className='search'  type="text"placeholder="Search here" />
+          <input className='search' type="text"placeholder="Search here" onChange={(e) => {
+            console.log(e.target.value);
+          }}/>
           <button className='button1'>Search</button>
         </div>
       </div>
+
       {/*visar alla items*/}
       <ItemLister cosmetic={cosmetic.slice(firstIndex, lastIndex)} />
+      
       {/*pagination, detta är det som gör att man kan skrolla och byta "sida" och inte behöver få sidan att lagga*/}
       <div className="pagination">
         {Array.from({ length: totalPages }).map((_, index) => (
