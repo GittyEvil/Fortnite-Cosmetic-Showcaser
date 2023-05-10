@@ -77,6 +77,7 @@ function BodyContainer({ cosmetic }) {
           <input className='search' type="text"placeholder="Search here" onChange={(e) => {
             console.log(e.target.value);
           }}/>
+          {/*när knappen trycks ska det man sökt komma upp(föremålet från api)*/}
           <button className='button1'>Search</button>
         </div>
       </div>
