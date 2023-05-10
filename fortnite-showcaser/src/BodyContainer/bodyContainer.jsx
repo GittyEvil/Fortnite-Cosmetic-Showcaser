@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './bodyContainer.css';
+import filter from 'jade/lib/filters';
 
 function Boxes(props) {
   return (
@@ -15,7 +16,7 @@ function ItemLister({cosmetic}) {
       {cosmetic.map((item, index) => (
         <div key={index}>
           {/*<h3>{item.name}</h3> */}
-          <img style={{width:"100px"}} src={item.images.icon} />
+          <img className='imgstyler' style={{width:"100px"}} src={item.images.icon} />
         </div>
       ))}
     </div>
@@ -26,16 +27,31 @@ function BodyContainer({ cosmetic }) {
     {/*detta hanterar sidorna och hur mycket items som visas på sidan*/}
     {/*use state är det som gör att sidan/flikarna uppdaterar och sedan visar ny info*/}
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 152;
+  const [filteredCosmetic, setFilteredCosmetic] = useState(cosmetic)
+  const [filterValue, setFilterValue] = useState("")
+
+   useEffect(() => {
+     var result =null;
+    if(filterValue == "") {
+      result = cosmetic;
+      setFilteredCosmetic(result)
+    } else{
+      const result = cosmetic.filter(cosmetic => cosmetic.type.displayValue == filterValue)
+      setFilteredCosmetic(result)
+    }
+    console.log(filteredCosmetic)
+  }, [filterValue])
+
+  const itemsPerPage = 105;
 
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
 
-  const totalPages = Math.ceil(cosmetic.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredCosmetic.length / itemsPerPage);
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
-
+  
   return(
     <div className="container">
       <div className="navcontainer">
@@ -46,11 +62,14 @@ function BodyContainer({ cosmetic }) {
         <Boxes title="Glider"/>
         {/*dropdown*/}
         <div className='dropdown'>
-          <select name="Filter" id="filter">
+          <select name="Filter" id="filter" onChange={(e) => {
+            setFilterValue(e.target.value)
+          }}>
+            <option value="" selected>Default</option>
             <option value="Glider">Glider</option>
-            <option value="Skin">Skin</option>
-            <option value="Backbling">Backbling</option>
-            <option value="Pickaxe">Pickaxe</option>
+            <option value="Outfit">Outfit</option>
+            <option value="Back Bling">Back Bling</option>
+            <option value="Harvesting Tool">Harvesting Tool</option>
           </select>
         </div>
         {/*searchbaren, ska göra så man kan söka efter ett visst item senare*/}
@@ -63,7 +82,7 @@ function BodyContainer({ cosmetic }) {
       </div>
 
       {/*visar alla items*/}
-      <ItemLister cosmetic={cosmetic.slice(firstIndex, lastIndex)} />
+      <ItemLister cosmetic={filteredCosmetic.slice(firstIndex, lastIndex)} />
       
       {/*pagination, detta är det som gör att man kan skrolla och byta "sida" och inte behöver få sidan att lagga*/}
       <div className="pagination">
