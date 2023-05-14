@@ -68,7 +68,7 @@ function BodyContainer({ cosmetic }) {
         {/*searchbaren, ska göra så man kan söka efter ett visst item senare*/}
         <div className='searchbar'>
           <input className='search' type="text" placeholder="Search here" onChange={(e) => {
-            console.log(e.target.value);
+
           }} />
           {/*när knappen trycks ska det man sökt komma upp(föremålet från api)*/}
           <button className='button1'>Search</button>
