@@ -11,7 +11,7 @@ import BodyContainer from './BodyContainer/bodyContainer';
     async function FetchData() {
       const response = await fetch("https://fortnite-api.com/v2/cosmetics/br");
       const data = await response.json();
-      setCosmetics(data.data.slice(0, 7000)) //.data.slice(0, 100) skär bara ner hur mång items den ska displaya
+      setCosmetics(data.data.slice(0, 7881)) //.data.slice(0, 100) skär bara ner hur mång items den ska displaya
     }
     FetchData()
     
@@ -25,7 +25,7 @@ import BodyContainer from './BodyContainer/bodyContainer';
   
   return (
     <div className="App">
-      <h1>Cosmetics showcaser</h1>
+      <h1 style={{color:"white"}}>Cosmetics showcaser</h1>
       <BodyContainer cosmetic={cosmetic}/>
       {/* .map funktionen nedan displayar just nu bara bilderna */ }
       
