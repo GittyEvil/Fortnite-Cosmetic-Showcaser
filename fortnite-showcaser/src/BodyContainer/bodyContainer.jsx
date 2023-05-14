@@ -1,14 +1,6 @@
 import { useEffect, useState } from 'react';
 import './bodyContainer.css';
-import filter from 'jade/lib/filters';
-
-function Boxes(props) {
-  return (
-    <div className='display'>
-      <a href="#">{props.title}</a>
-    </div>
-  )
-}
+//import filter from 'jade/lib/filters';
 
 function ItemLister({ cosmetic }) {
   return (
@@ -29,11 +21,11 @@ function BodyContainer({ cosmetic }) {
 
   useEffect(() => {
     var result = null;
-    if (filterValue == "") {
+    if (filterValue === "") {
       result = cosmetic;
       setFilteredCosmetic(result)
     } else {
-      const result = cosmetic.filter(cosmetic => cosmetic.type.displayValue == filterValue)
+      const result = cosmetic.filter(cosmetic => cosmetic.type.displayValue === filterValue)
       setFilteredCosmetic(result)
     }
     console.log(filteredCosmetic)
@@ -63,12 +55,15 @@ function BodyContainer({ cosmetic }) {
             <option value="Outfit">Outfit</option>
             <option value="Back Bling">Back Bling</option>
             <option value="Harvesting Tool">Harvesting Tool</option>
+            <option value="Wrap">Wrap</option>
+            <option value="Spray">Spray</option>
+            <option value="Loading Screen">Loading Screen</option>
           </select>
         </div>
         {/*searchbaren, ska göra så man kan söka efter ett visst item senare*/}
         <div className='searchbar'>
           <input className='search' type="text" placeholder="Search here" onChange={(e) => {
-
+            console.log(e.target.value)
           }} />
           {/*när knappen trycks ska det man sökt komma upp(föremålet från api)*/}
           <button className='button1'>Search</button>
