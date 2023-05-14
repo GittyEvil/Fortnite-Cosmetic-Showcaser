@@ -14,10 +14,27 @@ function ItemLister({ cosmetic }) {
   )
 }
 
+function Pagination({totalPages,currentPage,handlePageChange}) {
+  return(
+    <div className="pagination">
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <button
+            id='button'
+            key={index}
+            className={`page ${currentPage === index + 1 ? 'active' : ''}`}
+            onClick={() => handlePageChange(index + 1)
+          }>{index + 1}</button>
+        ))}
+      </div>
+  )
+}
+
+
 function BodyContainer({ cosmetic }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredCosmetic, setFilteredCosmetic] = useState(cosmetic)
   const [filterValue, setFilterValue] = useState("")
+  const [FilterSearch, setFilterSearch] = useState("")
 
   useEffect(() => {
     var result = null;
@@ -31,6 +48,12 @@ function BodyContainer({ cosmetic }) {
     console.log(filteredCosmetic)
   }, [filterValue])
 
+  useEffect(() => {
+    // ska filtrera vad man söker efter
+    const filtered = cosmetic.filter(cosmetic => cosmetic.name.toLowerCase().includes(FilterSearch.toLowerCase()));
+    setFilteredCosmetic(filtered);
+  }, [FilterSearch]);
+
   const itemsPerPage = 105;
 
   const lastIndex = currentPage * itemsPerPage;
@@ -40,7 +63,7 @@ function BodyContainer({ cosmetic }) {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   }
-
+  
   return (
     <div className="container">
       <div className="navcontainer">
@@ -63,7 +86,7 @@ function BodyContainer({ cosmetic }) {
         {/*searchbaren, ska göra så man kan söka efter ett visst item senare*/}
         <div className='searchbar'>
           <input className='search' type="text" placeholder="Search here" onChange={(e) => {
-            console.log(e.target.value)
+            setFilterSearch(e.target.value)
           }} />
           {/*när knappen trycks ska det man sökt komma upp(föremålet från api)*/}
           <button className='button1'>Search</button>
@@ -74,16 +97,7 @@ function BodyContainer({ cosmetic }) {
       <ItemLister cosmetic={filteredCosmetic.slice(firstIndex, lastIndex)} />
 
       {/*pagination, detta är det som gör att man kan skrolla och byta "sida" och inte behöver få sidan att lagga*/}
-      <div className="pagination">
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <button
-            id='button'
-            key={index}
-            className={`page ${currentPage === index + 1 ? 'active' : ''}`}
-            onClick={() => handlePageChange(index + 1)
-          }>{index + 1}</button>
-        ))}
-      </div>
+      <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={handlePageChange} />
     </div>
   )
 }
