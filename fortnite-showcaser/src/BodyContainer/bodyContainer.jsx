@@ -81,6 +81,8 @@ function BodyContainer({ cosmetic }) {
             <option value="Wrap">Wrap</option>
             <option value="Spray">Spray</option>
             <option value="Loading Screen">Loading Screen</option>
+            <option value="Spray">Spray</option>
+            <option value="Emote">Emote</option>
           </select>
         </div>
         {/*searchbaren, ska göra så man kan söka efter ett visst item senare*/}
@@ -88,12 +90,10 @@ function BodyContainer({ cosmetic }) {
           <input className='search' type="text" placeholder="Search here" onChange={(e) => {
             setFilterSearch(e.target.value)
           }} />
-          {/*när knappen trycks ska det man sökt komma upp(föremålet från api)*/}
-          <button className='button1'>Search</button>
         </div>
       </div>
 
-      {/*visar alla items*/}
+      {/*visar alla fortisar*/}
       <ItemLister cosmetic={filteredCosmetic.slice(firstIndex, lastIndex)} />
 
       {/*pagination, detta är det som gör att man kan skrolla och byta "sida" och inte behöver få sidan att lagga*/}
