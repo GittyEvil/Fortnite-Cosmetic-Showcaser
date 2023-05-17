@@ -9,8 +9,13 @@ Sortera efter specifikt föremål, mellan glider, skin, back bling, pickaxe etc
 Ifall du valt glider och vill hitta en specifik glider kan du söka upp den, sökfunktion och då kommer det specifika föremålet visas 
 
 ![image](https://github.com/GittyEvil/Fortnite-Cosmetic-Showcaser/assets/89584348/f9269029-722f-44e8-943f-f8fd6f342c7e)
-filteringsfunktion
 
+sido filtering
+
+![image](https://github.com/GittyEvil/Fortnite-Cosmetic-Showcaser/assets/89584348/e599dfa8-9fd2-4d0b-85ca-52dfd436260b)
+
+
+filteringsfunktion
 
 ![image](https://github.com/GittyEvil/Fortnite-Cosmetic-Showcaser/assets/89584348/2c2a0a43-c0e1-4561-a268-a1a0089f1483)
 
