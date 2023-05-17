@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './bodyContainer.css';
-//import filter from 'jade/lib/filters';
 
+//alla items som mappas(visas) upp och hamnar i containern
 function ItemLister({ cosmetic }) {
   return (
     <div className='ItemList'>
@@ -13,7 +13,7 @@ function ItemLister({ cosmetic }) {
     </div>
   )
 }
-
+//pagination, hanterar alla items via sidor på ett snygg sätt
 function Pagination({totalPages,currentPage,handlePageChange}) {
   return(
     <div className="pagination">
@@ -28,8 +28,7 @@ function Pagination({totalPages,currentPage,handlePageChange}) {
       </div>
   )
 }
-
-
+//själva containern som håller allt
 function BodyContainer({ cosmetic }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredCosmetic, setFilteredCosmetic] = useState(cosmetic)
@@ -49,13 +48,13 @@ function BodyContainer({ cosmetic }) {
   }, [filterValue])
 
   useEffect(() => {
-    // ska filtrera vad man söker efter
+    //filtrerar vad man söker efter
     const filtered = cosmetic.filter(cosmetic => cosmetic.name.toLowerCase().includes(FilterSearch.toLowerCase()));
     setFilteredCosmetic(filtered);
   }, [FilterSearch]);
 
+  //för variabler
   const itemsPerPage = 105;
-
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
 
@@ -93,10 +92,10 @@ function BodyContainer({ cosmetic }) {
         </div>
       </div>
 
-      {/*visar alla fortisar*/}
+      {/*visar alla items*/}
       <ItemLister cosmetic={filteredCosmetic.slice(firstIndex, lastIndex)} />
 
-      {/*pagination, detta är det som gör att man kan skrolla och byta "sida" och inte behöver få sidan att lagga*/}
+      {/*pagination*/}
       <Pagination totalPages={totalPages} currentPage={currentPage} handlePageChange={handlePageChange} />
     </div>
   )

@@ -1,10 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import BodyContainer from './BodyContainer/bodyContainer';
-
-
-//const API_KEY = process.env.REACT_APP_API_KEY;
-
+//"huvud komponenten"
  function App() {
   const [cosmetic, setCosmetics] = useState({});
   useEffect(()=>{
@@ -14,21 +11,16 @@ import BodyContainer from './BodyContainer/bodyContainer';
       setCosmetics(data.data.slice(0, 7881)) //.data.slice(0, 100) skär bara ner hur mång items den ska displaya
     }
     FetchData()
-    
   },[])
-  
-  console.log(cosmetic)
-  
+  //iffal listan är tom och api inte funkar så visas meddelandet
   if (!Array.isArray(cosmetic)) {
     return <p>No cosmetics found</p>;
   }
-  
   return (
     <div className="App">
       <h1 style={{color:"white"}}>Cosmetics showcaser</h1>
+      {/*kroppen av hemsidan*/}
       <BodyContainer cosmetic={cosmetic}/>
-      {/* .map funktionen nedan displayar just nu bara bilderna */ }
-      
     </div>
   );
 }
