@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Fortnite-Cosmetic-Showcaser/static/css/main.aea53191.css",
+    "main.js": "/Fortnite-Cosmetic-Showcaser/static/js/main.38a96b94.js",
+    "static/js/787.f57d881b.chunk.js": "/Fortnite-Cosmetic-Showcaser/static/js/787.f57d881b.chunk.js",
+    "index.html": "/Fortnite-Cosmetic-Showcaser/index.html",
+    "main.aea53191.css.map": "/Fortnite-Cosmetic-Showcaser/static/css/main.aea53191.css.map",
+    "main.38a96b94.js.map": "/Fortnite-Cosmetic-Showcaser/static/js/main.38a96b94.js.map",
+    "787.f57d881b.chunk.js.map": "/Fortnite-Cosmetic-Showcaser/static/js/787.f57d881b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aea53191.css",
+    "static/js/main.38a96b94.js"
+  ]
+}
